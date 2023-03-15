@@ -1,4 +1,4 @@
-from distances.damerau_levenshtein import damerau_lvst
+from algos.damerau_levenshtein import damerau_lvst
 from utils.blueprint import Blueprint
 from utils.cache import cache
 from utils.media import anime

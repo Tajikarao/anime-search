@@ -1,4 +1,4 @@
-from distances.cosinus import cos
+from algos.cosinus import cos
 from utils.blueprint import Blueprint
 from utils.cache import cache
 from utils.media import anime

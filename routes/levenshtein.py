@@ -1,4 +1,4 @@
-from distances.levenshtein import lvst
+from algos.levenshtein import lvst
 from utils.blueprint import Blueprint
 from utils.cache import cache
 from utils.media import anime

@@ -1,4 +1,4 @@
-from distances.jaro_winkler import jaro_winkler
+from algos.jaro_winkler import jaro_winkler
 from utils.blueprint import Blueprint
 from utils.cache import cache
 from utils.media import anime
