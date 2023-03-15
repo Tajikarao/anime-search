@@ -16,3 +16,8 @@ The objective of this project is to test different algorithms to find the best w
 | Levenshtein distance | Not suitable for use |
 | Soundex (Levenshtein Distance version) | Not suitable for use |
 | Soundex (Cosine Distance version) | Not suitable for use |
+
+
+## External resources
+
+[anime-offline-database](https://github.com/manami-project/anime-offline-database)
