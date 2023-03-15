@@ -1,14 +1,14 @@
-from algos.soundex import sndx
+from algos.soundex_cosine import sndx
 from utils.blueprint import Blueprint
 from utils.cache import cache
 from utils.media import anime
 
-blueprint = Blueprint("soundex")
+blueprint = Blueprint("soundex_cosine")
 
 
-@blueprint.route("/soundex/<search>/<limit>", methods=["GET"])
+@blueprint.route("/soundex_cosine/<search>/<limit>", methods=["GET"])
 @cache.cached(timeout=20)
-def soundex(search, limit):
+def soundex_cosine(search, limit):
     anime_list = anime.get_names()
 
     return sndx(anime_list, search, limit)
