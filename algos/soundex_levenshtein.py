@@ -10,9 +10,9 @@ def sndx(anime_list, search, limit):
         limit = 10
     limit = int(limit)
 
-    anime_codes = [soundex.soundex(anime) for anime in anime_list]
+    anime_codes = [soundex.soundex(anime.lower()) for anime in anime_list]
 
-    search_code = soundex.soundex(search)
+    search_code = soundex.soundex(search.lower())
 
     distances = np.array(
         [Levenshtein.distance(search_code, code) for code in anime_codes]

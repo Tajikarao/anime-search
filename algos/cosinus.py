@@ -11,9 +11,9 @@ def cos(anime_list, search, limit):
     vectorizer = TfidfVectorizer(
         analyzer="char", ngram_range=(1, 3), min_df=0, lowercase=False
     )
-    tfidf = vectorizer.fit_transform(anime_list)
+    tfidf = vectorizer.fit_transform((map(lambda x: x.lower(), anime_list)))
 
-    query_vec = vectorizer.transform([search])
+    query_vec = vectorizer.transform([search.lower()])
     distances = cosine_distances(query_vec, tfidf)
 
     indices = np.argsort(distances)[0][:limit]
