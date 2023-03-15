@@ -6,7 +6,7 @@ from utils.media import anime
 blueprint = Blueprint("damerau_levenshtein")
 
 
-@blueprint.route("/dameraulevenshtein/<search>/<limit>", methods=["GET"])
+@blueprint.route("/damerau_levenshtein/<search>/<limit>", methods=["GET"])
 @cache.cached(timeout=20)
 def damerau_levenshtein(search, limit):
     anime_list = anime.get_names()
