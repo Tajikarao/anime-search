@@ -10,7 +10,7 @@ The objective of this project is to test different algorithms to find the best w
 
 | Algorithm  | Efficiency |
 | ------------- | ------------- |
-| Cosine similarity | Can find the expected anime but must be partly well written |
+| Cosine distance | Can find the expected anime but must be partly well written |
 | Damerau–Levenshtein distance | Not suitable for use |
 | Jaro–Winkler distance | Can find the expected anime but must be partly well written  |
 | Levenshtein distance | Not suitable for use |
