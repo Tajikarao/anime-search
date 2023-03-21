@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import manhattan_distances
 
 
@@ -16,7 +16,7 @@ def mtt(anime_list, search, limit):
                 texts.append(variation)
                 labels.append(anime_name)
 
-    vectorizer = TfidfVectorizer()
+    vectorizer = CountVectorizer()
     X = vectorizer.fit_transform(texts)
 
     test_text_vector = vectorizer.transform([search])
