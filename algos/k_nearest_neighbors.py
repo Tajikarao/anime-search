@@ -19,7 +19,7 @@ def k_nearest_neighbors(anime_list, search, limit):
     vectorizer = TfidfVectorizer()
     X = vectorizer.fit_transform(texts)
 
-    nbrs = NearestNeighbors(n_neighbors=10, algorithm="auto").fit(X)
+    nbrs = NearestNeighbors(n_neighbors=limit, algorithm="auto").fit(X)
 
     test_text_vector = vectorizer.transform([search])
     distances, indices = nbrs.kneighbors(test_text_vector)
