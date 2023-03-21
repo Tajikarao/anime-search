@@ -9,6 +9,6 @@ blueprint = Blueprint("cosinus")
 @blueprint.route("/cosinus/<search>/<limit>", methods=["GET"])
 @cache.cached(timeout=20)
 def cosinus(search, limit):
-    anime_list = anime.get_names()
+    anime_list = anime.get_names_and_synonyms()
 
     return cos(anime_list, search, limit)

@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_distances
 
 
@@ -8,13 +8,29 @@ def cos(anime_list, search, limit):
         limit = 10
     limit = int(limit)
 
-    vectorizer = TfidfVectorizer(
-        analyzer="char", ngram_range=(1, 3), min_df=0, lowercase=False
-    )
-    tfidf = vectorizer.fit_transform((map(lambda x: x.lower(), anime_list)))
+    texts = []
+    labels = []
+    for anime_dict in anime_list:
+        for anime_name, variations in anime_dict.items():
+            for variation in variations:
+                texts.append(variation)
+                labels.append(anime_name)
 
-    query_vec = vectorizer.transform([search.lower()])
-    distances = cosine_distances(query_vec, tfidf)
+    vectorizer = CountVectorizer()
+    X = vectorizer.fit_transform(texts)
 
-    indices = np.argsort(distances)[0][:limit]
-    return [anime_list[i] for i in indices]
+    test_text_vector = vectorizer.transform([search])
+    distances = cosine_distances(test_text_vector, X)
+
+    anime_distances = {}
+    for i, label in enumerate(labels):
+        distance = distances[0][i]
+        if (
+            label in anime_distances
+            and distance < anime_distances[label]
+            or label not in anime_distances
+        ):
+            anime_distances[label] = distance
+
+    sorted_anime_distances = sorted(anime_distances.items(), key=lambda x: x[1])
+    return [anime_name for anime_name, _ in sorted_anime_distances[:limit]]
