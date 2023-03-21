@@ -35,6 +35,26 @@ class Anime(object, metaclass=Singleton):
                     medias.append(anime["title"])
 
         return list(set(medias))
+    
+    def get_names_and_synonyms(self):
+        database = self.get_offline_database()
+    
+        medias = []
+
+        if "data" in database:
+            for anime in database["data"]:
+                if "Title to be Announced" not in anime["title"]:
+
+                    anime_dict = {}
+                    synonyms = []
+                    if "synonyms" in anime:
+                        synonyms = list(anime["synonyms"])
+
+                    anime_dict[anime["title"]] = synonyms
+
+                    medias.append(anime_dict)
+
+        return medias
 
 
 anime = Anime()
