@@ -15,7 +15,7 @@ def damerau_lvst(anime_list, search, limit):
                 texts.append(variation)
                 labels.append(anime_name)
 
-    distances = np.array([damerau_levenshtein_distance(search, text) for text in texts])
+    distances = np.array([damerau_levenshtein_distance(search.lower(), text.lower()) for text in texts])
     indices = np.argsort(distances)
 
     anime_distances = {}

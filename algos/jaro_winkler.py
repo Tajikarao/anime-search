@@ -15,7 +15,7 @@ def jaro(anime_list, search, limit):
                 texts.append(variation)
                 labels.append(anime_name)
 
-    distances = np.array([jaro_winkler(search, text) for text in texts])
+    distances = np.array([jaro_winkler(search.lower(), text.lower()) for text in texts])
     indices = np.argsort(distances)[::-1]
 
     anime_distances = {}

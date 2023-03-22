@@ -9,6 +9,6 @@ blueprint = Blueprint("levenshtein")
 @blueprint.route("/levenshtein/<search>/<limit>", methods=["GET"])
 @cache.cached(timeout=20)
 def levenshtein(search, limit):
-    anime_list = anime.get_names()
+    anime_list = anime.get_names_and_synonyms()
 
     return lvst(anime_list, search, limit)
