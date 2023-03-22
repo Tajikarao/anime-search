@@ -9,6 +9,6 @@ blueprint = Blueprint("soundex_levenshtein")
 @blueprint.route("/soundex_levenshtein/<search>/<limit>", methods=["GET"])
 @cache.cached(timeout=20)
 def soundex_levenshtein(search, limit):
-    anime_list = anime.get_names()
+    anime_list = anime.get_names_and_synonyms()
 
     return sndx(anime_list, search, limit)
